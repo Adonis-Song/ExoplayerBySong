@@ -97,7 +97,7 @@ public final class MainActivity extends Activity {
 
         new Handler().postDelayed(()-> {
             initPlayer();
-        }, 5000);
+        }, 2000);
     }
 
     @Override
@@ -115,20 +115,24 @@ public final class MainActivity extends Activity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (player != null) {
+            player.release();
+        }
     }
 
     private void initPlayer() {
+        if (isFinishing()) return;
         AspectRatioFrameLayout layout = findViewById(R.id.layout_aspect_Ratio);
-        SimpleExoPlayer exoPlayer = new SimpleExoPlayer.Builder(this).build();
-        exoPlayer.setMediaSource(new DefaultMediaSourceFactory(this).createMediaSource(MediaItem
+        player = new SimpleExoPlayer.Builder(this).build();
+        player.setMediaSource(new DefaultMediaSourceFactory(this).createMediaSource(MediaItem
                 .fromUri(Uri.fromFile(
                         new File("/sdcard/DCIM/Camera/song.mp4")))));
         MySurfaceView surfaceView = findViewById(R.id.surface_view);
         surfaceView.getHolder().addCallback(surfaceView);
-                exoPlayer.setVideoSurfaceView(surfaceView);
-        exoPlayer.prepare();
-        exoPlayer.play();
-        exoPlayer.addVideoListener(new VideoListener() {
+        player.setVideoSurfaceView(surfaceView);
+        player.prepare();
+        player.play();
+        player.addVideoListener(new VideoListener() {
             @Override
             public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees,
                     float pixelWidthHeightRatio) {
@@ -145,7 +149,7 @@ public final class MainActivity extends Activity {
             }
         });
         PlayerControlView playerControlView = findViewById(R.id.surface_view_control);
-        playerControlView.setPlayer(exoPlayer);
+        playerControlView.setPlayer(player);
         playerControlView.show();
         findViewById(R.id.button).setOnClickListener(v -> {
             if (playerControlView.isVisible()) {

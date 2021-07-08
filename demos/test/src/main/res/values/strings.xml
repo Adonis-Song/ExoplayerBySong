@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2019 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2019 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,9 +14,9 @@
 -->
 <resources>
 
-  <string name="application_name">ExoPlayer SurfaceControl demo</string>
-  <string name="no_output_label">No output</string>
-  <string name="full_screen_label">Full screen</string>
-  <string name="new_activity_label">New activity</string>
+    <string name="application_name">ExoPlayer SurfaceControl demo</string>
+    <string name="no_output_label">No output</string>
+    <string name="full_screen_label">Full screen</string>
+    <string name="new_activity_label">New activity</string>
 
 </resources>

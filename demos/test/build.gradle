@@ -49,4 +49,5 @@ dependencies {
     implementation project(modulePrefix + 'library-dash')
     implementation 'androidx.annotation:annotation:' + androidxAnnotationVersion
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 }
